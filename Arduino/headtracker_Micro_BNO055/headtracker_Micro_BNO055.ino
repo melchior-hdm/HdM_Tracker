@@ -16,12 +16,6 @@
    provide an appropriate value in the constructor below (12345
    is used by default in this example).
 
-   Connections
-   ===========
-   Connect SCL to SCL pin (analog 5 on Arduino UNO )
-   Connect SDA to SDA pin (analog 4 on Arduino UNO)
-   Connect VDD to 3-5V DC (depending on your board's logic level)
-   Connect GROUND to common ground
 
    History
    =======
@@ -66,7 +60,7 @@ void displaySensorDetails(void)
 /**************************************************************************/
 void displaySensorStatus(void)
 {
-  /* Get the system status values (mostly for debugging purposes) */
+  /* Get the system status values (for debugging purposes) */
   uint8_t system_status, self_test_results, system_error;
   system_status = self_test_results = system_error = 0;
   bno.getSystemStatus(&system_status, &self_test_results, &system_error);
@@ -98,11 +92,6 @@ void displayCalStatus(void)
   bno.getCalibration(&system, &gyro, &accel, &mag);
 
   /* The data should be ignored until the system calibration is > 0 */
- // Serial.print("\t");
- // if (!system)
- // {
- //   Serial.print("! ");
- // }
 
   /* Display the individual values */
   Serial.print("Sys:");
@@ -151,8 +140,7 @@ void setup(void)
 
 /**************************************************************************/
 /*
-    Arduino loop function, called once 'setup' is complete (your own code
-    should go here)
+    Arduino loop function, called once 'setup' is complete
 */
 /**************************************************************************/
 void loop(void)
@@ -182,9 +170,6 @@ imu::Quaternion quat = bno.getQuat();
 
   /* Optional: Display calibration status */
   //displayCalStatus();
-
-  /* Optional: Display sensor status (debug only) */
-  //displaySensorStatus();
 
   /* Wait the specified delay before requesting nex data */
   delay(BNO055_SAMPLERATE_DELAY_MS);
