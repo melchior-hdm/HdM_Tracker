@@ -18,7 +18,7 @@
 */
 
 /* Set the delay between fresh samples */
-#define BNO055_SAMPLERATE_DELAY_MS (10)
+#define BNO055_SAMPLERATE_DELAY_MS (20)
 
 // Check I2C device address and correct line below (by default address is 0x29 or 0x28)
 //                                   id, address
